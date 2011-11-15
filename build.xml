@@ -1,0 +1,9 @@
+<project name="ifrastructure-as-code" default="webapp">
+  <property name="build.dir" location="build" />
+  <target name="webapp">
+    <mkdir dir = "${build.dir}" />
+    <war warfile="${build.dir}/app.war">
+     <fileset dir="webapp"/> 
+    </war>
+  </target>
+</project>
