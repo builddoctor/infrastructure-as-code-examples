@@ -1,0 +1,11 @@
+directory "build"
+
+task :default => :build do 
+  sh "vagrant provision"
+end
+
+task :graph => :default do 
+  sh  "vagrant ssh_config > build/ssh_config"
+  sh  "scp -F build/ssh_config default:/var/lib/puppet/state/graphs/expanded_relationships.dot build"
+  sh "dot -Tsvg -O build/expanded_relationships.dot"
+end
