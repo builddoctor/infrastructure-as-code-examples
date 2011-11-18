@@ -1,4 +1,7 @@
 {
-  "run_list": [ "recipe[01_hello_world]" ]
+  "run_list": [ 
+    "recipe[01_hello_world]",
+    "recipe[02_installed_app_on_nginx]"
+  ]
 }
 
