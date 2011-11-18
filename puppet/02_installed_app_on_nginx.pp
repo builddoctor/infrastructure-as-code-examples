@@ -13,7 +13,8 @@ class nginx::install {
   file {
     'default web page':
       path => '/var/www/nginx-default/index.html',
-      content => 'This page, courtesy of puppet';
+      content => 'This page, courtesy of puppet',
+      require => Package['nginx'];
   }
 
   service {
