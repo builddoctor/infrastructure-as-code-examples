@@ -1,13 +1,8 @@
 class nginx::install {
-  exec {
-    'aptitude update':
-      command => '/usr/bin/aptitude update';
-  }
 
   package {
     'nginx':
-      ensure  => present,
-      require => Exec['aptitude update']
+      ensure  => present;
   }
 
   file {
@@ -24,12 +19,6 @@ class nginx::install {
       ensure => running,
       require => Package['nginx'];
   }
-
-  group {
-    'puppet':
-      ensure => present;
-      # stop vagrant from moaning.
-    }
 
 }
 
