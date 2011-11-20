@@ -7,17 +7,17 @@ class nginx::install {
 
   file {
     'default web page':
-      path => '/var/www/nginx-default/index.html',
+      path    => '/var/www/nginx-default/index.html',
       content => 'This page, courtesy of puppet',
       require => Package['nginx'];
   }
 
   service {
     'nginx':
-      enable => true,
+      ensure    => running,
+      enable    => true,
       hasstatus => true,
-      ensure => running,
-      require => Package['nginx'];
+      require   => Package['nginx'];
   }
 
 }
