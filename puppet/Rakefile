@@ -1,11 +1,24 @@
 directory "build"
 
-task :default => :build do 
+task :default => :build do
   sh "vagrant provision"
 end
 
-task :graph => :default do 
+task :rebuild do
+  sh "vagrant destroy"
+  sh "vagrant up"
+end
+
+desc "fetch graphs from the machine"
+task :graph => :default do
   sh  "vagrant ssh_config > build/ssh_config"
   sh  "scp -F build/ssh_config default:/var/lib/puppet/state/graphs/expanded_relationships.dot build"
   sh "dot -Tsvg -O build/expanded_relationships.dot"
+end
+
+desc "lint the puppet code"
+task :lint do
+  Dir["**/*.pp"].each do |puppet_file|
+    sh "bundle exec puppet-lint #{puppet_file}"
+  end
 end
