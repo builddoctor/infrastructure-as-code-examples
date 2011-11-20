@@ -6,7 +6,6 @@ Vagrant::Config.run do |config|
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "."
     puppet.manifest_file  = "03_installed_app_on_nginx_and_jetty.pp"
-    #puppet.options = "--graph"
-    puppet.options = "--debug"
+    puppet.options = "--graph"
   end
 end
