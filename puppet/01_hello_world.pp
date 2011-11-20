@@ -1,6 +1,6 @@
 #!/usr/bin/env puppet apply
 
 file {
-  "/tmp/PuppetHelloWorld":
-    content => "Hello Yow!"
+  '/tmp/PuppetHelloWorld':
+    content => 'Hello Yow!'
 }
