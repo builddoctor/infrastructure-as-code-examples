@@ -1,44 +1,57 @@
+class ubuntu::common {
+  exec {
+    'apt-get clean':
+      command => '/usr/bin/aptitude update';
+    'apt-get update':
+      command => '/usr/bin/aptitude update',
+      require => Exec['apt-get clean'];
+  }
+}
+
 class nginx::install {
-    notice('nginx::install')
+  include ubuntu::common
 
   package {
     'nginx':
-      ensure  => present;
+      ensure  => present,
+      require => Class['ubuntu::common'];
   }
 
   service {
     'nginx':
-      enable => true,
+      ensure    => running,
+      enable    => true,
       hasstatus => true,
-      ensure => running,
-      require => Package['nginx'];
+      require   => Package['nginx'];
+
   }
 
 }
 
 class jetty::install {
-  notice('jetty::install')
+  include ubuntu::common
 
   package {
-   'jetty':
-      ensure => present;
+    'jetty':
+      ensure  => present,
+      require => Class['ubuntu::common'];
   }
 
   service {
     'jetty':
-      enable => true,
+      ensure    => running,
+      enable    => true,
       hasstatus => true,
-      ensure => running,
-      require => [Package['jetty'], File['/etc/default/jetty']];
+      require   => [Package['jetty'], File['/etc/default/jetty']];
   }
 
   file {
     '/etc/default/jetty':
-      ensure => present,
+      ensure  => present,
       content => "
-NO_START=0 
+NO_START=0
 VERBOSE=yes
-"      
+"
     }
 }
 
@@ -50,7 +63,8 @@ class corporateapp::install {
 class puppet::fudge {
   group{
     'puppet': ensure => present;
-  }}
+  }
+}
 
 node default {
   include corporateapp::install
