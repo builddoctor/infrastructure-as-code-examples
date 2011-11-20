@@ -4,9 +4,11 @@ GEM
     facter (1.6.3)
     puppet (2.7.6)
       facter (>= 1.5.1)
+    puppet-lint (0.1.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   puppet
+  puppet-lint
