@@ -23,7 +23,6 @@ class nginx::install {
       enable    => true,
       hasstatus => true,
       require   => Package['nginx'];
-
   }
 
 }
