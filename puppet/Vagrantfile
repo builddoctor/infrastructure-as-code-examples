@@ -4,8 +4,11 @@ Vagrant::Config.run do |config|
   config.vm.forward_port("web", 80, 8080, :auto => true)
   config.vm.forward_port("ssh", 22, 2222, :auto => true)
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "manifests/classes"
-    puppet.manifest_file  = "03_installed_app_on_nginx_and_jetty.pp"
+    #puppet.manifests_path = "manifests/classes"
+    puppet.manifests_path = "manifests"
+    puppet.module_path = "modules"
+    #puppet.manifest_file  = "03_installed_app_on_nginx_and_jetty.pp"
+    puppet.manifest_file  = "site.pp"
     #puppet.options = "--graph"
   end
 end
