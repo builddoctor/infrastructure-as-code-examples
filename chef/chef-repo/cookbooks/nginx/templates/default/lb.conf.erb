@@ -1,0 +1,12 @@
+http {
+    upstream <%= node[:nginx][:lb][:name] %> {
+        <% node[:nginx][:lb][:servers].each do |server| -%>
+        server <%= server %>;
+        <% end -%>
+    }
+
+    server {
+        listen <%= node[:nginx][:lb][:port] %>;
+        server_name <%= node[:nginx][:lb]
+    }
+}

@@ -5,7 +5,7 @@ Vagrant::Config.run do |config|
   config.vm.forward_port("ssh", 22, 2222, :auto => true)
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "chef-repo/cookbooks"
-    chef.add_recipe "01_hello_world"
-    chef.add_recipe "02_installed_app_on_nginx"
+    chef.roles_path = "chef-repo/roles"
+    chef.add_role("appserver")
   end
 end
