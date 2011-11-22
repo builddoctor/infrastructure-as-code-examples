@@ -1,0 +1,11 @@
+server {
+    listen   80 default;
+    server_name  localhost;
+
+    access_log  /var/log/nginx/<%= node[:nginx][:loadbalancer][:name] %>.access.log;
+
+    location / {
+        proxy_pass <%= node[:nginx][:loadbalancer][:source] %>;
+    }
+}
+

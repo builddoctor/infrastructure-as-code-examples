@@ -7,6 +7,7 @@ service "jetty" do
 end
 
 file "/etc/default/jetty" do
+    mode "0644"
     content "NO_START=0\nVERBOSE=yes\n"
     notifies :restart, resources(:service => "jetty")
 end
