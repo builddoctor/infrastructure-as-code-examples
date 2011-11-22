@@ -3,6 +3,8 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
   config.vm.forward_port("web", 80, 8080, :auto => true)
   config.vm.forward_port("ssh", 22, 2222, :auto => true)
+  config.vm.host_name  = 'www.corporateapp.com'
+  config.vm.network '192.168.0.3'
   config.vm.provision :puppet do |puppet|
     #puppet.manifests_path = "manifests/classes"
     puppet.manifests_path = "manifests"
