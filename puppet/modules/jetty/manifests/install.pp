@@ -21,6 +21,7 @@ class jetty::install {
       content => "
 NO_START=0
 VERBOSE=yes
-"
+JETTY_PORT=8080
+";
     }
 }
