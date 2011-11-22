@@ -1,6 +1,6 @@
 directory "build"
 
-task :default => :build do
+task :default => [:parse, :lint] do
   sh "vagrant provision"
 end
 
@@ -22,3 +22,11 @@ task :lint do
     sh "bundle exec puppet-lint #{puppet_file}"
   end
 end
+
+desc "Parse all puppet files"
+task :parse do
+  file = File.open("build/parseonly.pp","w+")
+  Dir.glob('etc/puppet/**/*.pp').each { |manifest| file <<  "import '#{manifest}'\n" }
+  sh "bundle exec puppet parser validate build/parseonly.pp"
+end
+
