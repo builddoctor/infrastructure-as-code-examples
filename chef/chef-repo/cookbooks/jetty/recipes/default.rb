@@ -1,3 +1,5 @@
+require_recipe "apt"
+
 package "jetty" do
     action :install
 end

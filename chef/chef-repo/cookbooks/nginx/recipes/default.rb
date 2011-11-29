@@ -1,3 +1,5 @@
+require_recipe "apt"
+p
 package "nginx" do
   action :install
 end
