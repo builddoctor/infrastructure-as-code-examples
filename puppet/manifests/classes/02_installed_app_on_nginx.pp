@@ -17,7 +17,7 @@ class nginx::install {
       ensure    => running,
       enable    => true,
       hasstatus => true,
-      require   => Package['nginx'];
+      require   => [Package['nginx'], File['default web page']];
   }
 
 }

@@ -6,6 +6,6 @@ class corporateapp::install {
       ensure  => file,
       path    => '/usr/share/jetty/webapps/app.war',
       source  => 'puppet:///modules/corporateapp/app.war',
-      require => Class['jetty::install'];
+      require => [Class['jetty::install'], Class['nginx::install']];
   }
 }

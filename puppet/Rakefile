@@ -4,9 +4,10 @@ task :default => [:parse, :lint] do
   sh "vagrant provision"
 end
 
+
 task :rebuild do
-  sh "vagrant destroy"
-  sh "vagrant up"
+  sh "bundle exec vagrant destroy"
+  sh "bundle exec vagrant up"
 end
 
 desc "fetch graphs from the machine"

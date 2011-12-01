@@ -16,3 +16,6 @@ body {font: helvetica }
     width : auto;
     text-align:center;
 }
+.logo {
+     float:right;
+}

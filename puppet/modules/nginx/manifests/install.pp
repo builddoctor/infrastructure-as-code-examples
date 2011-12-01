@@ -7,22 +7,32 @@ class nginx::install {
       require => Class['ubuntu::common'];
   }
 
+  exec {
+    'restart nginx':
+      command     => '/usr/sbin/service nginx restart',
+      refreshonly => true,
+      require => Service['nginx'];
+  }
+
   file {
     'nginx config file':
       ensure  => present,
       path    => '/etc/nginx/sites-available/www.corporateapp.com',
       source  => 'puppet:///modules/nginx/nginx_www.corporateapp.com',
-      require => Package['nginx'];
+      require => Package['nginx'],
+      before  => Exec['restart nginx'];
 
     '/etc/nginx/sites-enabled/www.corporateapp.com':
       ensure  => link,
       target  => '/etc/nginx/sites-available/www.corporateapp.com',
-      require => Package['nginx'];
+      require => Package['nginx'],
+      before  => Exec['restart nginx'];
 
     'default nginx config file':
       ensure  => absent,
       path    => '/etc/nginx/sites-enabled/default',
-      require => Package['nginx'];
+      require => Package['nginx'],
+      before  => Exec['restart nginx'];
 
   }
 
