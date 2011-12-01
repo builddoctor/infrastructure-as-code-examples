@@ -1,3 +1,17 @@
 This is a demo project. It does Puppet and Chef.
 
+Links
+=====
+Puppet:   http://puppetlabs.com
+Chef:     http://opscode.com
+Cfengine: http://cfengine.com
+Vagrant:  http://vagrantup.com
+
+Papers
+======
+http://scholar.google.com.au/scholar?cluster=117232066542572526&hl=en&as_sdt=0,5 [order matters in systems administration]
+http://scholar.google.com.au/scholar?cluster=975615455838852374&hl=en&as_sdt=0,5 [bootstrapping an infrastructure]
+http://scholar.google.com.au/scholar?hl=en&q=luke+kanies&btnG=Search&as_sdt=0%2C5 [Isconf: theory, practice and beyond]
+
+
 All text and code is copyright © 2011 Julian Simpson and Christopher Read, unless otherwise attributed.
