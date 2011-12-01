@@ -2,7 +2,7 @@ class jetty::install {
   include ubuntu::common
   exec {
     'restart jetty':
-      command     => '/usr/sbin/service jetty force-reload',
+      command     => '/usr/sbin/service jetty stop && /usr/sbin/service jetty start',
       refreshonly => true,
       require     => Service['jetty'];
   }

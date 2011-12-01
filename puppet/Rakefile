@@ -8,6 +8,8 @@ end
 task :rebuild do
   sh "bundle exec vagrant destroy"
   sh "bundle exec vagrant up"
+  sleep 60 # wait for jetty to start
+  sh "open http://192.168.0.3/app/"
 end
 
 desc "fetch graphs from the machine"
